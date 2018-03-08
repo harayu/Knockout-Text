@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Knockout Text</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="bg-image">
+        <p class="knockout-text">
+            <span class="desc">THE CAT WALL, SURRY HILLS </span>
+        </p>
+    </div>
+    <script>
+        {
+            let text = document.querySelector('.knockout-text');
+            let span = text.firstElementChild;
+            let spanWidth = span.clientWidth;
+
+            span.style.setProperty('--x', - spanWidth + 'px');
+
+            text.classList.add('slide');
+            span.addEventListener('transitionend', () => {
+                text.classList.add('end');
+                span.textContent = 'Photo by Paul Carmona on Unsplash';
+                span.style.setProperty('--x', 0);
+                setTimeout( () => {
+                    text.style.mixBlendMode = 'normal';
+                }, 2000);
+            }, false);
+        }
+    </script>
+</body>
+</html>
